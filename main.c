@@ -1,31 +1,64 @@
 #include <stdio.h>
 #include <locale.h>
+#include <math.h>
 
-float conversor (float t_C);
+float calculoIMCh (float massacorporeah);
+
+float calculoIMCm (float massacorpoream);
 
 int main ()
 {
     setlocale (LC_ALL, "portuguese");
 
-    float t_C;
-    printf ("Digite a temperatura em graus Celsius: ");
-    scanf ("%f", &t_C);
+    puts ("Você é homem ou mulher? Digite 'H' para 'homem' e 'M' para 'mulher'.");
 
-    conversor (t_C);
+    char resposta;
 
-    // a função "conversor" está EM FUNÇÃO de t_C, ou seja, do valor da temperatura em Celsius digitado pelo usuário.
+    scanf ("%c", &resposta);
 
-    printf ("%1.0f graus em Celsius corresponde a %1.1f Fahrenheit!", t_C, conversor (t_C));
+    char massacorporeah;
+    char massacorpoream;
 
-    // a função conversor RETORNA o valor da conversão, então, %1.1f corresponde ao valor retornado por "conversor (t_C)", como especificado acima.
+    if (resposta == 'H')
+    {
+        calculoIMCh(massacorporeah);
+    }
+    else if (resposta == 'M')
+    {
+        calculoIMCm(massacorpoream);
+    }
+    else
+        puts ("Digite uma resposta válida!");
 
     return (0);
 }
 
-float conversor (float t_C)
+float calculoIMCh (float massacorporeah)
 {
-    float x;
+    float altura;
+    float imc;
 
-    x = (t_C *9/5) + 32;
-    return (x);
+    puts ("Digite sua altura: ");
+    scanf ("%f", &altura);
+
+    imc = pow(altura,2) *22;
+
+    printf ("Seu IMC (peso ideal) é %.2f", imc);
+
+    return (imc);
+}
+
+float calculoIMCm (float massacorpoream)
+{
+    float altura;
+    float imc;
+
+    puts ("Digite sua altura: ");
+    scanf ("%f", &altura);
+
+    imc = pow(altura,2) *21;
+
+    printf ("Seu IMC (peso ideal) é %.2f", imc);
+
+    return (imc);
 }
