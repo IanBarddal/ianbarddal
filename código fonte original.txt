@@ -3,7 +3,7 @@
 int main ()
 {
     int codigo, quantidade;
-    float codigo1, codigo2, codigo3, codigo4, total1, total2, total3, total4, totalApagar, desconto;
+    float codigo1, codigo2, codigo3, codigo4, total, total1, total2, total3, total4, totalApagar, desconto;
 
     codigo1 = 5.30;
     codigo2 = 6.00;
@@ -34,7 +34,7 @@ int main ()
         printf ("R$ %.2f\n", totalApagar);
     }
 
-    else if ((codigo == 2) && ((total2 >= 40) || (quantidade >= 15)))
+    else if ((codigo == 2) && ((total1 >= 40) || (quantidade >= 15)))
     {
         total2 = codigo2*quantidade;
         desconto = total2 * 0.15;
@@ -43,7 +43,7 @@ int main ()
         printf ("R$ %.2f\n", totalApagar);
     }
 
-    else if ((codigo == 2) && ((total2 < 40) || (quantidade < 15)))
+    else if ((codigo == 2) && ((total1 < 40) || (quantidade < 15)))
     {
         total2 = codigo2*quantidade;
         totalApagar = total2;
@@ -51,7 +51,7 @@ int main ()
         printf ("R$ %.2f\n", totalApagar);
     }
 
-    else if ((codigo == 3) && ((total3 >= 40) || (quantidade >= 15)))
+    else if ((codigo == 3) && ((total1 >= 40) || (quantidade >= 15)))
     {
         total3 = codigo3*quantidade;
         desconto = total3 * 0.15;
@@ -60,7 +60,7 @@ int main ()
         printf ("R$ %.2f\n", totalApagar);
     }
 
-    else if ((codigo == 3) && ((total3 < 40) || (quantidade < 15)))
+    else if ((codigo == 3) && ((total1 < 40) || (quantidade < 15)))
     {
         total3 = codigo3*quantidade;
         totalApagar = total3;
@@ -68,7 +68,7 @@ int main ()
         printf ("R$ %.2f\n", totalApagar);
     }
 
-    else if ((codigo == 4) && ((total4 >= 40) || (quantidade >= 15)))
+    else if ((codigo == 4) && ((total1 >= 40) || (quantidade >= 15)))
     {
         total4 = codigo4*quantidade;
         desconto = total4 * 0.15;
@@ -77,10 +77,18 @@ int main ()
         printf ("R$ %.2f\n", totalApagar);
     }
 
-    else if ((codigo == 4) && ((total4 < 40) || (quantidade < 15)))
+    else if ((codigo == 4) && ((total1 < 40) || (quantidade < 15)))
     {
         total4 = codigo4*quantidade;
         totalApagar = total4;
+
+        printf ("R$ %.2f\n", totalApagar);
+    }
+
+    else
+    {
+        total = codigo*quantidade;
+        totalApagar = total;
 
         printf ("R$ %.2f\n", totalApagar);
     }
