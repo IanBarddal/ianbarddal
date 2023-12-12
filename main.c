@@ -1,31 +1,45 @@
 #include <stdio.h>
-#include <locale.h>
+#include <math.h>
 
-float conversor (float t_C);
+int testaprimo (int numero);
 
 int main ()
 {
-    setlocale (LC_ALL, "portuguese");
 
-    float t_C;
-    printf ("Digite a temperatura em graus Celsius: ");
-    scanf ("%f", &t_C);
+    int a,b,c,d,produto;
 
-    conversor (t_C);
+    scanf ("%d %d %d %d", &a, &b, &c, &d);
 
-    // a função "conversor" está EM FUNÇÃO de t_C, ou seja, do valor da temperatura em Celsius digitado pelo usuário.
+    testaprimo (a);
+    testaprimo (b);
+    testaprimo (c);
+    testaprimo (d);
 
-    printf ("%1.0f graus em Celsius corresponde a %1.1f Fahrenheit!", t_C, conversor (t_C));
-
-    // a função conversor RETORNA o valor da conversão, então, %1.1f corresponde ao valor retornado por "conversor (t_C)", como especificado acima.
+    if (testaprimo (a) == 1 && testaprimo (b) == 1 && testaprimo (c) == 1 && testaprimo (d) == 1)
+    {
+        produto = a*b*c*d;
+        printf ("%d", produto);
+    }
+    else
+    {
+        printf ("SEM PRODUTO");
+    }
 
     return (0);
 }
 
-float conversor (float t_C)
+int testaprimo (int numero)
 {
-    float x;
+  if ((numero == 0) || (numero == 1))
+     return(0);
+  else {
+    int i, fim = sqrt(numero);
+    for(i=2; i<=fim; i++)
+        {
+            if ((numero % i) == 0)
+            return(0);
+        }
 
-    x = (t_C *9/5) + 32;
-    return (x);
+    return(1);
+  }
 }
