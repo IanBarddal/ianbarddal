@@ -1,31 +1,63 @@
 #include <stdio.h>
+#include <string.h>
 #include <locale.h>
 
-float conversor (float t_C);
+float calculaPreco (int quantidade, char tipoDeBebida[31]);
 
 int main ()
 {
     setlocale (LC_ALL, "portuguese");
 
-    float t_C;
-    printf ("Digite a temperatura em graus Celsius: ");
-    scanf ("%f", &t_C);
+    int quantidade = 0;
+    char tipoDeBebida [31];
+    float precofinal;
 
-    conversor (t_C);
+    printf ("Digite a bebida que deseja: ");
+    fgets (tipoDeBebida, 31, stdin);
 
-    // a função "conversor" está EM FUNÇÃO de t_C, ou seja, do valor da temperatura em Celsius digitado pelo usuário.
+    size_t len = strlen(tipoDeBebida);
+    if (len > 0 && tipoDeBebida[len - 1] == '\n')
+        {
+            tipoDeBebida[len - 1] = '\0';
+        }
 
-    printf ("%1.0f graus em Celsius corresponde a %1.1f Fahrenheit!", t_C, conversor (t_C));
+    printf ("Digite a quantidade: ");
+    scanf ("%d", &quantidade);
 
-    // a função conversor RETORNA o valor da conversão, então, %1.1f corresponde ao valor retornado por "conversor (t_C)", como especificado acima.
+    precofinal = calculaPreco (quantidade, tipoDeBebida);
+
+    printf ("R$ %.2f", precofinal);
 
     return (0);
 }
 
-float conversor (float t_C)
+float calculaPreco (int quantidade, char tipoDeBebida[31])
 {
-    float x;
+    float preco = 0;
 
-    x = (t_C *9/5) + 32;
-    return (x);
+    if (strcmp (tipoDeBebida,"cerveja") == 0)
+        {
+            preco = quantidade*6.59;
+            return (preco);
+        }
+
+    else if (strcmp (tipoDeBebida,"vinho") == 0)
+        {
+            preco = quantidade*28;
+            return (preco);
+        }
+
+    else if (strcmp (tipoDeBebida, "whiskey") == 0)
+        {
+            preco = quantidade*38;
+            return (preco);
+        }
+
+    else if (strcmp (tipoDeBebida, "cachaca") == 0)
+        {
+            preco = quantidade*12;
+            return (preco);
+        }
+
+    return (preco);
 }

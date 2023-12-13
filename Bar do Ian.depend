@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1702435326 source:c:\users\iangi\desktop\ian\programação\outros\bar do ian\main.c
+	<stdio.h>
+	<string.h>
+	<locale.h>
+
