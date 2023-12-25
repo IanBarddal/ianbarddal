@@ -1,31 +1,55 @@
 #include <stdio.h>
-#include <locale.h>
-
-float conversor (float t_C);
 
 int main ()
 {
-    setlocale (LC_ALL, "portuguese");
+    int x,y;
 
-    float t_C;
-    printf ("Digite a temperatura em graus Celsius: ");
-    scanf ("%f", &t_C);
+    float soma1, soma2, soma3;
+    float pastel, empada, kibe;
 
-    conversor (t_C);
+    float custos[4][4];
 
-    // a função "conversor" está EM FUNÇÃO de t_C, ou seja, do valor da temperatura em Celsius digitado pelo usuário.
+    for (x = 0; x < 4; x++)
+    {
+        for (y = 0; y < 4; y++)
+        {
+            scanf ("%f", &custos[x][y]);
+        }
+    }
 
-    printf ("%1.0f graus em Celsius corresponde a %1.1f Fahrenheit!", t_C, conversor (t_C));
+    for (x = 0; x < 1; x++)
+    {
+        for (y = 0; y < 4; y++)
+        {
+            pastel = custos[0][y]*custos[3][y];
+            soma1 += pastel;
+        }
+    }
 
-    // a função conversor RETORNA o valor da conversão, então, %1.1f corresponde ao valor retornado por "conversor (t_C)", como especificado acima.
+    empada = 1;
+    soma2 = 0;
+
+    for (x = 1; x < 2; x++)
+    {
+        for (y = 0; y < 4; y++)
+        {
+            empada = custos[1][y]*custos[3][y];
+            soma2 += empada;
+        }
+    }
+
+    for (x = 2; x < 3; x++)
+    {
+        for (y = 0; y < 4; y++)
+        {
+            kibe = custos[2][y]*custos[3][y];
+            soma3 += kibe;
+        }
+    }
+
+    printf ("%.2f\n", soma1);
+    printf ("%.2f\n", soma2);
+    printf ("%.2f\n", soma3);
 
     return (0);
-}
-
-float conversor (float t_C)
-{
-    float x;
-
-    x = (t_C *9/5) + 32;
-    return (x);
 }
